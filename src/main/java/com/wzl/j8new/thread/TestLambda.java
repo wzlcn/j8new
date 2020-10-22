@@ -7,6 +7,8 @@ package com.wzl.j8new.thread;
  */
 public class TestLambda {
 
+    public static void main(String[] args) {
 
+    }
 
 }
