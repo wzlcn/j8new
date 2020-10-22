@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wzl.j8new.dao.AppMapper" >
+
+    <resultMap id="BaseResultMap" type="com.wzl.j8new.bean.App">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="app_version" property="appVersion" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="base-column-ref">
+        id,app-version,time
+    </sql>
+
+    <insert id="insert" parameterType="com.wzl.j8new.bean.App">
+        insert into `app` (`app_version`,`time`)  values (#{appVersion},#{time})
+    </insert>
+</mapper>
