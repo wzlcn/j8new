@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CornTest {
+
+    /*cron表达式语法:
+            [秒][分][小时][日][月][周][年]
+    注：[年]不是必须的域，可以省略[年]，则一共6个域*/
     /*有些子表达式能包含一些范围或列表
     例如：子表达式（天（星期））可以为 “MON-FRI”，“MON，WED，FRI”，“MON-WED,SAT”
             “*”字符代表所有可能的值
@@ -27,7 +31,8 @@ public class CornTest {
     例如：“6L”表示这个月的倒数第６天，“ＦＲＩＬ”表示这个月的最一个星期五
     注意：在使用“L”参数时，不要指定列表或范围，因为这会导致问题*/
     @Scheduled(cron = "30 34 9 * * ?")
-    public void test(){
+
+    public void test() {
         System.out.println("corn表达式测试");
     }
 }
