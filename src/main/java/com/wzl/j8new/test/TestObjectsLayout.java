@@ -12,5 +12,9 @@ public class TestObjectsLayout {
         Object o = new Object();
 //        String name = "王志龙asdfg";
         System.out.println(ClassLayout.parseInstance(o).toPrintable());
+
+        synchronized (o){
+            System.out.println(ClassLayout.parseInstance(o).toPrintable());
+        }
     }
 }
