@@ -23,8 +23,6 @@ public class Lambda {
         List<String> strings = Arrays.asList("Hello", "World");
         strings.stream().map(x -> x.split("")).flatMap(Arrays::stream).forEach(y -> System.out.println(y));
 
-        //回退版本1
-        //回退版本2
-        //回退版本3
+
     }
 }
