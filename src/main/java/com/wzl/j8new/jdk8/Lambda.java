@@ -24,5 +24,6 @@ public class Lambda {
         strings.stream().map(x -> x.split("")).flatMap(Arrays::stream).forEach(y -> System.out.println(y));
 
 
+        //2
     }
 }
