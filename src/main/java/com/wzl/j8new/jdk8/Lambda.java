@@ -22,9 +22,5 @@ public class Lambda {
         //flatMap降维
         List<String> strings = Arrays.asList("Hello", "World");
         strings.stream().map(x -> x.split("")).flatMap(Arrays::stream).forEach(y -> System.out.println(y));
-
-
-        //2
-        //3
     }
 }
