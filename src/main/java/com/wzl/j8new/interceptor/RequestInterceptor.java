@@ -26,14 +26,14 @@ public class RequestInterceptor implements HandlerInterceptor {
 //        String url = request.getRequestURL().substring(0, endIndex);
         String url = request.getRequestURL().toString();
         String origin = request.getHeader("Origin");
-        if (StringUtils.equals(url,"http://localhost:8080/app/insert")){
+        /*if (StringUtils.equals(url,"http://localhost:8080/app/insert")){
             response.reset();
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
             response.getWriter().println("非法ip禁止访问");
             request.setAttribute("flag","invalid");
             return true;
-        }
+        }*/
         logger.info("----------------url:----------" + url);
         return true;
     }
