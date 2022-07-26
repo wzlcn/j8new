@@ -1,5 +1,10 @@
 package com.wzl.j8new.thread;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author wangzhilong
  * @date 2020/11/16 15:14
@@ -19,7 +24,7 @@ public class TestA1B2C3 {
             synchronized (o){
                 for (int i = 0; i < 26; i++) {
                     try {
-                        System.out.println(alp);
+                        System.out.print(alp);
                         alp++;
                         o.notify();
                         o.wait();
@@ -36,7 +41,7 @@ public class TestA1B2C3 {
             synchronized (o){
                 for (int i = 0; i < 26; i++) {
                     try {
-                        System.out.println(num);
+                        System.out.print(num);
                         num++;
                         o.wait();
                         o.notify();
@@ -46,6 +51,56 @@ public class TestA1B2C3 {
                 }
 //                o.notify();
             }
+        },"数字").start();
+    }
+}
+
+class print1A2B{
+    public static void main(String[] args) {
+        Lock lock = new ReentrantLock();
+        Condition condition = lock.newCondition();
+
+        new Thread(() ->{
+            char c = 'A';
+            try {
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            lock.lock();
+            for (int i = 0; i < 26; i++) {
+                System.out.println(c);
+                c++;
+                condition.signalAll();
+                try {
+                    condition.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            condition.signalAll();
+            lock.unlock();
+        },"字母").start();
+
+        new Thread(() ->{
+            int num = 1;
+            lock.lock();
+            try {
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < 26; i++) {
+                System.out.println(num);
+                num++;
+                try {
+                    condition.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                condition.signalAll();
+            }
+            lock.unlock();
         },"数字").start();
     }
 }

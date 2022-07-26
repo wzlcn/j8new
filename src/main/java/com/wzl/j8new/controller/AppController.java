@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author wangzhilong
@@ -38,5 +40,27 @@ public class AppController {
         }
         appService.insert(app);
         logger.info("新增成功");
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i = 0;i < nums.length;i++){
+            int num = target - nums[i];
+            if(map.containsKey(num)){
+                return new int[]{map.get(num),i};
+            }
+            map.put(nums[i],i);
+        }
+        return new int[0];
+    }
+
+    public static void main(String[] args) {
+//        System.out.println(twoSum(new int[]{2,3,5,7,10},9));
+        String date = "2003-03-01";
+        char[] chars = date.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+
+        }
+        System.out.println(chars[9]);
     }
 }
