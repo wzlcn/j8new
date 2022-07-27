@@ -30,7 +30,7 @@ public @interface Log
     /**
      * 操作人类别
      */
-    public OperatorType operatorType() default OperatorType.MANAGE;
+    public OperatorType operatorType() default OperatorType.MOBILE;
 
     /**
      * 是否保存请求的参数

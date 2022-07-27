@@ -19,10 +19,18 @@ public class AppServiceImpl implements AppService {
 
     @Autowired
     private AppMapper appMapper;
+    @Autowired
+    private AsyncOperation asyncOperation;
 
     @Override
     public void insert(App app) {
         logger.info("----------开始执行新增方法");
-        appMapper.insert(app);
+        logger.info("当前线程名称：" + Thread.currentThread().getName());
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        asyncOperation.testAsyncException();
     }
 }

@@ -28,6 +28,7 @@ import java.util.Map;
  *
  * @author wxy
  */
+/*若方法中开启异步线程，异步线程的操作不会被记录*/
 @Aspect
 @Component
 public class LogAspect
@@ -69,7 +70,7 @@ public class LogAspect
 
             // *========数据库日志=========*//
             SysOperLog operLog = new SysOperLog();
-            operLog.setStatus(BusinessStatus.SUCCESS.ordinal());
+            operLog.setStatus(BusinessStatus.SUCCESS.getCode());
             // 请求的地址
             String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
             operLog.setOperIp(ip);
@@ -81,13 +82,13 @@ public class LogAspect
 
             if (e != null)
             {
-                operLog.setStatus(BusinessStatus.FAIL.ordinal());
+                operLog.setStatus(BusinessStatus.FAIL.getCode());
                 logger.info("e.getMessage======" + e.getMessage());
                 operLog.setErrorMsg(e.getMessage().length() > 2000 ? e.getMessage().substring(0, 2000) : e.getMessage());
             }
             // 设置方法名称
             String className = joinPoint.getTarget().getClass().getName();
-            className = className.substring(className.lastIndexOf("."));
+            className = className.substring(className.lastIndexOf(".") + 1);
             String methodName = joinPoint.getSignature().getName();
             operLog.setMethod(className + "." + methodName + "()");
             // 设置请求方式
@@ -116,11 +117,11 @@ public class LogAspect
     public void getControllerMethodDescription(JoinPoint joinPoint, Log log, SysOperLog operLog, Object jsonResult) throws Exception
     {
         // 设置action动作
-        operLog.setBusinessType(log.businessType().ordinal());
+        operLog.setBusinessType(log.businessType().getCode());
         // 设置标题
         operLog.setTitle(log.title());
         // 设置操作人类别
-        operLog.setOperatorType(log.operatorType().ordinal());
+        operLog.setOperatorType(log.operatorType().getCode());
         // 是否需要保存request，参数和值
         if (log.isSaveRequestData())
         {

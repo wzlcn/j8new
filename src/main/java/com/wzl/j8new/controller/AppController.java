@@ -43,7 +43,7 @@ public class AppController {
         }*/
         appService.insert(app);
         logger.info("新增成功");
-        int a = 10 / 0;
+
         Map map = new HashMap();
         map.put("status","0000");
         map.put("messages","新增成功");

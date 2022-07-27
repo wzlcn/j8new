@@ -19,4 +19,9 @@ public class App implements Serializable {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//前端传参为表单
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")//前端传参为json
     private Date time;
+
+    public App(String appVersion, Date time) {
+        this.appVersion = appVersion;
+        this.time = time;
+    }
 }
