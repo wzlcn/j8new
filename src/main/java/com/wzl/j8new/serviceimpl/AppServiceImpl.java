@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author wangzhilong
  * @date 2020/7/17 9:01
@@ -31,6 +34,17 @@ public class AppServiceImpl implements AppService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        asyncOperation.testAsyncException();
+//        asyncOperation.testAsyncException();
+        appMapper.insert(app);
+    }
+
+    @Override
+    public List<Map> query() {
+        return appMapper.query();
+    }
+
+    @Override
+    public List<Map> query2() {
+        return appMapper.query2();
     }
 }

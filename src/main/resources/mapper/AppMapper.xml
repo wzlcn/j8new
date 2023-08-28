@@ -13,6 +13,21 @@
     </sql>
 
     <insert id="insert" parameterType="com.wzl.j8new.bean.App">
-        insert into `app` (`app_version`,`time`)  values (#{appVersion},#{time})
+         `app` (`app_version`,`time`)  values (#{appVersion},#{time})
     </insert>
+
+    <select id="query" resultType="java.util.Map">
+        select
+        <if test="'01'.toString == '01'.toString">
+            '1',
+        </if>
+        <if test="'01'.toString == '02.toString'">
+            id2,
+        </if>
+        app_version,time from app
+    </select>
+
+    <select id="query2" resultType="java.util.Map">
+        select * from ms_031_pb.level_relation
+    </select>
 </mapper>

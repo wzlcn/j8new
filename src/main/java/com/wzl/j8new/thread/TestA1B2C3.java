@@ -69,7 +69,7 @@ class print1A2B{
             }
             lock.lock();
             for (int i = 0; i < 26; i++) {
-                System.out.println(c);
+                System.out.print(c);
                 c++;
                 condition.signalAll();
                 try {
@@ -91,7 +91,7 @@ class print1A2B{
                 e.printStackTrace();
             }
             for (int i = 0; i < 26; i++) {
-                System.out.println(num);
+                System.out.print(num);
                 num++;
                 try {
                     condition.await();

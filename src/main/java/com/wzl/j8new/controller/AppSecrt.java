@@ -48,10 +48,10 @@ public class AppSecrt {
     public static void main(String[] args) {
         String APP_ID = "u6a7K0GlCE";
         // 系统当前时间
-        String TIMESTAMP = "2022-05-16 14:30:00 100"; // 获取系统当前时间
-        String TRANS_ID = "20220516143049467334402663125"; // 时间戳
-        String app_s="zRJhMMK7RBczdqb29nIbnJNpzTPHL56A"; // 测试
-        String  app_secret="93qZYGrElzxVVK8l5Bp2fYkFQV0VNy5c"; // 正式
+        String TIMESTAMP = "2023-01-09 11:12:05 279"; // 获取系统当前时间
+        String TRANS_ID = "20230109111205279369818"; // 时间戳
+//        String app_secret="zRJhMMK7RBczdqb29nIbnJNpzTPHL56A"; // 测试
+        String  app_secret="DA5VzBcPEw6tadJPH45F9CsdL59ZV1zm"; // 正式
 
         String resultString = "APP_ID"+APP_ID+"TIMESTAMP"+TIMESTAMP+"TRANS_ID"+TRANS_ID+app_secret;
         System.out.println("---"+resultString);
